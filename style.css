@@ -92,7 +92,7 @@ li:hover {
 
 p, figcaption {
 	padding-bottom: calc(var(--gutter)/2);
-	font-size: calc(var(--font-size)*0.8);
+	font-size: calc(var(--font-size)*0.6);
 }
 
 .date-added {
