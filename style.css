@@ -85,7 +85,7 @@ li:hover {
 	font-weight: bold;
 }
 
-p {
+p, figcaption {
 	padding-bottom: calc(var(--gutter)/2);
 	font-size: calc(var(--font-size)*0.8);
 }
@@ -103,6 +103,17 @@ a:hover {
 	text-transform: uppercase;
 	color: var(--font-color);
 	text-decoration: underline;
+}
+
+img, iframe {
+	border-radius: 15%;
+	overflow: hidden;
+}
+
+iframe {
+	width:560px; 
+	height:315px;
+	z-index: 1;
 }
 
 footer.p {
