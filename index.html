@@ -5,13 +5,15 @@
 		<meta name="viewport" content="width=device width, initial-scale=1"/>
 		<link rel="stylesheet" href="reset.css">
 		<link rel="stylesheet" href="style.css">
+		<script defer src="assets/arena.js"></script>
 		<title>Project 4: Links</title>
 	</head>
 
 	<body>
 		<section>
 			<h1>WEIRD, WILD & WONDERFUL</h1>
-			<h2>Engaging with a Mushroom</h2>
+			<h2 id="channel-title"></h2>
+			<p id="channel-description"></p>
 			<p id="filter-label">What would you like to explore?</p>
 			<ul id="filters">
 				<li class="tag">WEIRD</li>
@@ -19,7 +21,12 @@
 				<li class="tag">WONDERFUL</li>
 			</ul>
 		</section>
-		<section class="image">
+		<section id="allblocks">
+			<p><span id="channel-count"></span> blocks</p>
+			<ul id="channel-blocks"></ul>
+		</section>
+
+		<!-- <section class="image">
 			<figure>
 				<figcaption>Artist “Forages” With Paper to Form Fungi Sculptures That Look Incredibly Real</figcaption>
 				<img class="fit-picture"
@@ -43,11 +50,14 @@
 				<audio controls src="assets/audio.mp3"></audio>
 			  </figure>
 			  <p class="date-added"> Added 5 days ago by <a href="https://www.are.na/kritika-dhariwal">Kritika Dhariwal</a></p>
-		</section>
+		</section> -->
 
 
 	<footer>
-		<p>A collaboration between mushroom fans Rebecca & Kritika, 2024</p>
+		<p>A collaboration between mushroom fans</p>
+		<section id="channel-users">
+		<p><a id="channel-link">Check us out on Arena! ↗</a></p>
+		</section>
 	</footer>
 	</body>
 </html>

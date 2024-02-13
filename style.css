@@ -67,6 +67,10 @@ section:nth-child(even){
 	}
 }
 
+#channel-blocks {
+	color: var(--font-color);
+}
+
 li {
 	border-radius: 30%;
 	border-style: solid;
