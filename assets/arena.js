@@ -38,13 +38,12 @@ let renderBlock = (block) => {
 		let linkItem =
 			`
 			<li>
-				<p><em>Link</em></p>
+				<h3>${ block.title }</h3>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
-				<h3>${ block.title }</h3>
 				${ block.description_html }
 				<p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
@@ -55,11 +54,36 @@ let renderBlock = (block) => {
 	// Images!
 	else if (block.class == 'Image') {
 		// …up to you!
+		let imageItem =
+			`
+			<li>
+				<h3>${ block.title }</h3>
+				<figure>
+					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+					<img src="${ block.image.original.url }">
+				</figure>
+				<figcaption>
+					${ block.description_html }
+				</figcaption>
+			</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
+
+	// description was originally a p tag for images w/ font size *0.6. Date added was /2
 
 	// Text!
 	else if (block.class == 'Text') {
 		// …up to you!
+		let textItem =
+			`
+			<li>
+				<h3>${ block.title}</h3>
+				<p>${ block.contents}</p>
+			</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
 
 	// Uploaded (not linked) media…
@@ -72,7 +96,7 @@ let renderBlock = (block) => {
 			let videoItem =
 				`
 				<li>
-					<p><em>Video</em></p>
+					<h3>${ block.title }</h3>
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
 				`
@@ -92,7 +116,7 @@ let renderBlock = (block) => {
 			let audioItem =
 				`
 				<li>
-					<p><em>Audio</em></p>
+				<h3>${ block.title }</h3>
 					<audio controls src="${ block.attachment.url }"></video>
 				</li>
 				`
@@ -111,7 +135,7 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li>
-					<p><em>Linked Video</em></p>
+				<h3>${ block.title }</h3>
 					${ block.embed.html }
 				</li>
 				`
@@ -122,6 +146,14 @@ let renderBlock = (block) => {
 		// Linked audio!
 		else if (embed.includes('rich')) {
 			// …up to you!
+			let linkedAudioItem =
+			`
+			<li>
+				<h3>${ block.title }</h3>
+				${ block.embed.html}
+			</li>
+			`
+			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
 		}
 	}
 }

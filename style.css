@@ -24,6 +24,20 @@ body {
 	background-color: var(--color);
 	color: var(--font-color);
 	font-family: var(--font);
+	display: flex;
+	gap: calc(var(--gutter)*2);
+	position: relative;
+}
+
+#title {
+	height: 100vw;
+	position: sticky;
+	top: calc(var(--gutter)/1.618);
+	flex: 50%;
+}
+
+#allblocks {
+	flex: 50%;
 }
 
 h1 {
@@ -36,12 +50,13 @@ h2 {
 	padding-bottom: calc(var(--gutter));
 }
 
-section {
-	padding-bottom: calc(var(--gutter));
+h3 {
+	font-size: calc(var(--font-size)*0.8);
+	padding-bottom: calc(var(--gutter)/2);
 }
 
-section:nth-child(even){
-	text-align: right;
+section {
+	padding-bottom: calc(var(--gutter));
 }
 
 #filter-label{
@@ -72,6 +87,11 @@ section:nth-child(even){
 }
 
 li {
+	max-width: 60vw;
+	margin-bottom: calc(var(--gutter));
+}
+
+p + #filters {
 	border-radius: 30%;
 	border-style: solid;
 	border-width: 2px;
@@ -81,13 +101,13 @@ li {
 	font-size: calc(var(--font-size)*0.6);
 }
 @media screen and (min-width: 600px) {
-	li {
+	p + #filters {
 		padding-left: calc(var(--gutter)/2);
 		padding-right: calc(var(--gutter)/2);
 	}
 }
 
-li:hover {
+p + #filters:hover {
 	background-color: var(--font-color);
 	color: var(--color);
 	transition: 0.5s;
@@ -95,6 +115,7 @@ li:hover {
 }
 
 p, figcaption {
+	padding-top: calc(var(--gutter)/3);
 	padding-bottom: calc(var(--gutter)/2);
 	font-size: calc(var(--font-size)*0.6);
 }
@@ -116,14 +137,11 @@ a:hover {
 
 img {
 	height: 50vh;
-}
-
-img, iframe {
 	border-radius: 15%;
 	overflow: hidden;
 }
 
-iframe {
+iFrame {
 	width: 560px; 
 	height: 315px;
 	z-index: 1;
