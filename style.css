@@ -43,6 +43,7 @@ body {
 h1 {
 	font-size: calc(var(--font-size)*2);
 	padding-bottom: calc(var(--gutter));
+	text-align: right;
 }
 
 h2 {
@@ -84,12 +85,10 @@ section {
 
 #channel-blocks {
 	color: var(--font-color);
-}
-
-li {
-	max-width: 60vw;
 	margin-bottom: calc(var(--gutter));
+	max-width: 60vw;
 }
+/* how to center images? */
 
 p + #filters {
 	border-radius: 30%;
@@ -145,9 +144,5 @@ iFrame {
 	width: 560px; 
 	height: 315px;
 	z-index: 1;
-}
-
-footer {
-	font-size: calc(var(--font-size)/4);
 }
 
