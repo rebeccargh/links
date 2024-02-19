@@ -62,14 +62,18 @@ let renderBlock = (block) => {
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
-				</figure>
-				<figcaption>
+					<figcaption>
 					${ block.description_html }
-				</figcaption>
+					</figcaption>
+				</figure>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
+
+// what does source media string do?
+// description html is what you want to pull in
+// because we're in a text block, you can use ${} - why?
 
 	// description was originally a p tag for images w/ font size *0.6. Date added was /2
 
