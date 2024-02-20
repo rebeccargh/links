@@ -99,7 +99,26 @@ section {
 	margin-bottom: calc(var(--gutter));
 	max-width: 60vw;
 }
-/* how to center images? */
+
+@media screen and (min-width: 850px) {
+	figure {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: calc(var(--gutter));
+		margin-left: -5vw;
+	}
+
+	figcaption {
+		max-width: 400px;
+	}
+}
+
+/* text is nudged in, nudge everything else? */
+
+div {
+	padding-left: calc(var(--gutter)/2);
+}
 
 p + #filters {
 	border-radius: 30%;

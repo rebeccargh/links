@@ -37,14 +37,18 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
+			<liclass= "block block--link">
 				<h2>${ block.title }</h2>
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-				</picture>
-				${ block.description_html }
+				<div>
+					<figure>
+						<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+						<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+						<img src="${ block.image.original.url }">
+						<figcaption>
+						${ block.description_html }
+						</figcaption>
+					</figure>
+				</div>
 				<p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
 			`
@@ -56,16 +60,18 @@ let renderBlock = (block) => {
 		// …up to you!
 		let imageItem =
 			`
-			<li>
+			<li class= "block block--img">
 				<h2>${ block.title }</h2>
-				<figure>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-					<figcaption>
-					${ block.description_html }
-					</figcaption>
-				</figure>
+				<div>
+					<figure>
+						<source media="(max-width: 428px)" srcset="${ block.image.thumb }">
+						<source media="(max-width: 640px)" srcset="${ block.image.large }">
+						<img src="${ block.image.original.url }">
+						<figcaption>
+						${ block.description_html }
+						</figcaption>
+					</figure>
+				</div>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
@@ -80,9 +86,9 @@ let renderBlock = (block) => {
 		// …up to you!
 		let textItem =
 			`
-			<li>
+			<li class="block block--text">
 				<h2>${ block.title}</h2>
-				<p>${ block.contents}</p>
+				<div>${ block.content_html}</div>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
@@ -97,9 +103,11 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<liclass= "block block--videoup">
 					<h2>${ block.title }</h2>
-					<video controls src="${ block.attachment.url }"></video>
+					<div>
+						<video controls src="${ block.attachment.url }"></video>
+					</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
@@ -111,26 +119,33 @@ let renderBlock = (block) => {
 		else if (attachment.includes('pdf')) {
 			// …up to you!
 			let pdfItem =
-			`
-			<li>
-				<h2>${ block.title}</h2>
-				${ block.embed}
-				<p>${ block.description_html}</p>
-			</li>
-			`
+				`
+				<li class="block block--pdf">
+					<h2> ${ block.title} </h2>
+					<div>
+						<a href=" ${ block.attachment.url}">
+							<figure>
+								<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+								<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+								<img src="${ block.image.original.url}" alt="${ block.title}">
+							</figure>
+						</a>	
+					</div>
+				</li>
+				`
 			channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		}
-
-		// this is not working and i dont understand enough to make it work right now
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
+				<liclass= "block block--audioup">
 				<h2>${ block.title }</h2>
-					<audio controls src="${ block.attachment.url }"></audio>
+					<div>
+						<audio controls src="${ block.attachment.url }"></audio>
+					</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -147,9 +162,11 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
+				<liclass= "block block--videolink">
 				<h2>${ block.title }</h2>
-					${ block.embed.html }
+					<div>
+						${ block.embed.html }
+					</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
@@ -161,9 +178,11 @@ let renderBlock = (block) => {
 			// …up to you!
 			let linkedAudioItem =
 			`
-			<li>
+			<liclass= "block block--audiolink">
 				<h2>${ block.title }</h2>
-				${ block.embed.html}
+					<div>
+						${ block.embed.html}
+					</div>
 			</li>
 			`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
