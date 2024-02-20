@@ -38,7 +38,7 @@ let renderBlock = (block) => {
 		let linkItem =
 			`
 			<li>
-				<h3>${ block.title }</h3>
+				<h2>${ block.title }</h2>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
@@ -57,7 +57,7 @@ let renderBlock = (block) => {
 		let imageItem =
 			`
 			<li>
-				<h3>${ block.title }</h3>
+				<h2>${ block.title }</h2>
 				<figure>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
@@ -75,15 +75,13 @@ let renderBlock = (block) => {
 // description html is what you want to pull in
 // because we're in a text block, you can use ${} - why?
 
-	// description was originally a p tag for images w/ font size *0.6. Date added was /2
-
 	// Text!
 	else if (block.class == 'Text') {
 		// …up to you!
 		let textItem =
 			`
 			<li>
-				<h3>${ block.title}</h3>
+				<h2>${ block.title}</h2>
 				<p>${ block.contents}</p>
 			</li>
 			`
@@ -100,7 +98,7 @@ let renderBlock = (block) => {
 			let videoItem =
 				`
 				<li>
-					<h3>${ block.title }</h3>
+					<h2>${ block.title }</h2>
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
 				`
@@ -112,7 +110,18 @@ let renderBlock = (block) => {
 		// Uploaded PDFs!
 		else if (attachment.includes('pdf')) {
 			// …up to you!
+			let pdfItem =
+			`
+			<li>
+				<h2>${ block.title}</h2>
+				${ block.embed}
+				<p>${ block.description_html}</p>
+			</li>
+			`
+			channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		}
+
+		// this is not working and i dont understand enough to make it work right now
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
@@ -120,8 +129,8 @@ let renderBlock = (block) => {
 			let audioItem =
 				`
 				<li>
-				<h3>${ block.title }</h3>
-					<audio controls src="${ block.attachment.url }"></video>
+				<h2>${ block.title }</h2>
+					<audio controls src="${ block.attachment.url }"></audio>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -139,7 +148,7 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li>
-				<h3>${ block.title }</h3>
+				<h2>${ block.title }</h2>
 					${ block.embed.html }
 				</li>
 				`
@@ -153,7 +162,7 @@ let renderBlock = (block) => {
 			let linkedAudioItem =
 			`
 			<li>
-				<h3>${ block.title }</h3>
+				<h2>${ block.title }</h2>
 				${ block.embed.html}
 			</li>
 			`
@@ -169,8 +178,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	let userAddress =
 		`
 		<address>
-			<img src="${ user.avatar_image.display }">
-			<h3>${ user.first_name }</h3>
+			<h2>${ user.first_name }</h2>
 			<p><a href="https://are.na/${ user.slug }">Are.na profile ↗</a></p>
 		</address>
 		`
