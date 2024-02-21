@@ -37,7 +37,7 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<liclass= "block block--link">
+			<li class= "block block--link">
 				<h2>${ block.title }</h2>
 				<div>
 					<figure>
@@ -48,8 +48,9 @@ let renderBlock = (block) => {
 						${ block.description_html }
 						</figcaption>
 					</figure>
+					<p class="date-added">Added on: ${ block.connected_at}</p>
 				</div>
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+				<p><a href="${ block.source.url }" target="_blank">See the original ↗</a></p>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -103,7 +104,7 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<liclass= "block block--videoup">
+				<li class= "block block--videoup">
 					<h2>${ block.title }</h2>
 					<div>
 						<video controls src="${ block.attachment.url }"></video>
@@ -123,7 +124,7 @@ let renderBlock = (block) => {
 				<li class="block block--pdf">
 					<h2> ${ block.title} </h2>
 					<div>
-						<a href=" ${ block.attachment.url}">
+						<a href=" ${ block.attachment.url}" target="_blank">
 							<figure>
 								<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 								<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
@@ -141,7 +142,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<liclass= "block block--audioup">
+				<li class= "block block--audioup">
 				<h2>${ block.title }</h2>
 					<div>
 						<audio controls src="${ block.attachment.url }"></audio>
@@ -162,7 +163,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<liclass= "block block--videolink">
+				<li class= "block block--videolink">
 				<h2>${ block.title }</h2>
 					<div>
 						${ block.embed.html }
@@ -178,7 +179,7 @@ let renderBlock = (block) => {
 			// …up to you!
 			let linkedAudioItem =
 			`
-			<liclass= "block block--audiolink">
+			<li class= "block block--audiolink">
 				<h2>${ block.title }</h2>
 					<div>
 						${ block.embed.html}
@@ -246,3 +247,4 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		})
 	})
 
+// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --line 51 has date added, need to edit string to format date correctly
