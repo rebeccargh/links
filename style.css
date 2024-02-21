@@ -102,7 +102,7 @@ section {
 
 li {
 	margin-bottom: calc(var(--gutter)*1.618);
-	opacity: 0.8;
+	opacity: 0.5;
 }
 
 
@@ -181,24 +181,33 @@ iFrame {
 	z-index: 1;
 }
 
-/* @keyframes breathing {
-	0% {
-	  transform: scale(1);
-	}
-	50% {
-	  transform: scale(1.25);
-	}
-	100% {
-	  transform: scale(1);
-	}
-  }
-  li.breathe1 {
-	opacity: 1;
-	animation: breathing 2s infinite alternate;
-  } */
-
   li.breath1 {
 	opacity: 0.1;
+	transition: opacity 2s;
+	animation-name: breathing;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+	animation-fill-mode: alternate;
+  }
+
+  @keyframes breathing {
+	0% {
+	  transform: scale(0.8);
+	}
+	50% {
+	  transform: scale(0.9);
+	}
+	100% {
+	  transform: scale(0.8);
+	}
+  }
+
+  li:hover {
+	animation-name: none;
+	opacity: 1;
+	transition: opacity 2s;
+	transform: scale(1);
+	transition: 2s;
   }
 
 /* footer {
