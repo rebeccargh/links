@@ -18,10 +18,10 @@
 body {
 	font-family: sans-serif;
 	font-size: var(--font-size);
-	padding-bottom: calc(var(--gutter)*3);
+	padding-bottom: calc(var(--gutter)*2);
 	padding-left: var(--gutter);
 	padding-right: var(--gutter);
-	padding-top: calc(var(--gutter)*3);
+	padding-top: calc(var(--gutter)*2);
 	background-color: var(--color);
 	color: var(--font-color);
 	font-family: var(--font);
@@ -31,6 +31,7 @@ body {
 	flex-direction: column;
 	gap: calc(var(--gutter)*2);
 	position: relative;
+	transition: var(--color) 60s linear;
 }
 
 
@@ -38,11 +39,11 @@ body {
 	height: 100vw;
 	position: sticky;
 	top: calc(var(--gutter)/1.618);
-	flex: 50%;
+	flex: 30%;
 }
 
 #allblocks {
-	flex: 50%;
+	flex: 70%;
 }
 
 @media screen and (min-width: 600px) {
@@ -59,7 +60,7 @@ body {
 h1 {
 	font-size: calc(var(--font-size)*2);
 	text-transform: uppercase;
-	padding-bottom: calc(var(--gutter));
+	padding-bottom: calc(var(--gutter)/1.618);
 	text-align: right;
 }
 
@@ -70,29 +71,6 @@ h2 {
 
 section {
 	padding-bottom: calc(var(--gutter));
-}
-
-#filter-label{
-	font-size: calc(var(--font-size)*0.6);
-	text-align: center;
-}
-
-#filters {
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	row-gap: calc(var(--gutter));
-	margin-left: calc(var(--gutter)*3);
-	margin-right: calc(var(--gutter)*3);
-}
-
-@media screen and (min-width: 850px) {
-	#filters {
-		display: flex;
-		flex-direction: row;
-	}
 }
 
 #channel-blocks {
@@ -123,29 +101,6 @@ li {
 
 div {
 	padding-left: calc(var(--gutter)/2);
-}
-
-p + #filters {
-	border-radius: 30%;
-	border-style: solid;
-	border-width: 2px;
-	border-color: var(--font-color);
-	padding-top: calc(var(--gutter)/5);
-	padding-bottom: calc(var(--gutter)/5);
-	font-size: calc(var(--font-size)*0.6);
-}
-@media screen and (min-width: 600px) {
-	p + #filters {
-		padding-left: calc(var(--gutter)/2);
-		padding-right: calc(var(--gutter)/2);
-	}
-}
-
-p + #filters:hover {
-	background-color: var(--font-color);
-	color: var(--color);
-	transition: 0.5s;
-	font-weight: bold;
 }
 
 p:not(#channel-users), figcaption {
@@ -223,13 +178,13 @@ audio::-webkit-media-controls-mute-button{
 
   @keyframes breathing {
 	0% {
-	  transform: scale(0.8);
-	}
-	50% {
 	  transform: scale(0.9);
 	}
+	50% {
+	  transform: scale(0.95);
+	}
 	100% {
-	  transform: scale(0.8);
+	  transform: scale(0.9);
 	}
   }
 
@@ -251,6 +206,19 @@ audio::-webkit-media-controls-mute-button{
 	transition: 2s;
   }
 }
+
+.changebody {
+	background-color: #DBBDF6;
+	color: #342A3C;
+	transition: background-color 20s linear;
+				color 20s linear;
+}
+
+a.changebody {
+	color: #C11481;
+	transition: color 20s linear;
+}
+/* this does not work yet */
 
 /* footer {
 	color: var(--font-color);

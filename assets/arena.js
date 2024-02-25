@@ -48,7 +48,6 @@ let renderBlock = (block) => {
 						${ block.description_html }
 						</figcaption>
 					</figure>
-					<p class="date-added">Added on: ${ block.connected_at}</p>
 				</div>
 				<p><a href="${ block.source.url }" target="_blank">See the original ↗</a></p>
 			</li>
@@ -240,11 +239,39 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 				}
 			}, {
 				root: document, // This is only needed in the example iframe!
-				rootMargin: '-20% 0% -20% 0%', // CSS-ish: top/right/bottom/left.
+				rootMargin: '-15% 0% -15% 0%', // CSS-ish: top/right/bottom/left.
 			})
 		
 			sectionObserver.observe(block) // Watch each one!
 		})
+
+		let scrollClass = 'trip1'
+		let liElements = document.querySelectorAll('li') // Get all <li> elements
+
+		let intersectionCount = 0 // Counter for intersecting <li> elements
+
+		let intersectionObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			intersectionCount++; // Increment counter when <li> element intersects with viewport
+			if (intersectionCount >= 5) {
+				// Perform your action when scrolled past 10 <li> elements
+
+				document.body.classList.add('changebody')
+				// Additional actions or function calls can be performed here
+			}
+			// } else {
+			// 	// Reset <body> properties when no longer scrolled past 10 <li> elements
+			// 	document.body.classList.remove('changebody');
+			// 	intersectionCount = 0; // Reset intersection counter
+				}
+		})
+		})
+
+		// Observe each <li> element
+		liElements.forEach(li => {
+		intersectionObserver.observe(li);
+		})
 	})
 
-// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --line 51 has date added, need to edit string to format date correctly
+// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --could make title or posts melt? blurry? or have something wither/die when out of frame, reverse the inspector so it's focusing on things that ARENT selected --ANIMTION-PLAY-STATE pause
