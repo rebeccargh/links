@@ -246,19 +246,23 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		})
 
 		let scrollClass = 'trip1'
-		let liElements = document.querySelectorAll('li') // Get all <li> elements
+		let liElements = document.querySelectorAll('li')
 
-		let intersectionCount = 0 // Counter for intersecting <li> elements
+		let intersectionCount = 0
 
 		let intersectionObserver = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
-			intersectionCount++; // Increment counter when <li> element intersects with viewport
+			intersectionCount++;
 			if (intersectionCount >= 5) {
-				// Perform your action when scrolled past 10 <li> elements
+				let listItems = document.querySelectorAll('li');
 
+				// Loop <li>s, add class
+				listItems.forEach(item => {
+					item.classList.add('changebody');
+				});
 				document.body.classList.add('changebody')
-				// Additional actions or function calls can be performed here
+				// Add extra functions here if necessary
 			}
 			// } else {
 			// 	// Reset <body> properties when no longer scrolled past 10 <li> elements
