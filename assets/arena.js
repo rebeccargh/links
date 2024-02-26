@@ -245,37 +245,63 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 			sectionObserver.observe(block) // Watch each one!
 		})
 
-		let scrollClass = 'trip1'
-		let liElements = document.querySelectorAll('li')
 
-		let intersectionCount = 0
+		// OLD CODE THAT MICHAEL SAID IS COMPLICATED FOR NO REASON
 
-		let intersectionObserver = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-			intersectionCount++
-			if (intersectionCount >= 5) {
-				let listItems = document.querySelectorAll('li')
+		// let scrollClass = 'trip1'
+		// let liElements = document.querySelectorAll('li')
 
-				document.body.classList.add('changebody')
-				// Loop <li>s, add class
-				listItems.forEach(item => {
-					item.classList.add('changebody')
-				})
+		// let intersectionCount = 0
 
-				// Add extra functions here if necessary
-			}
+		// let intersectionObserver = new IntersectionObserver((entries) => {
+		// entries.forEach(entry => {
+		// 	if (entry.isIntersecting) {
+		// 	intersectionCount++
+		// 	if (intersectionCount >= 5) {
+		// 		let listItems = document.querySelectorAll('li')
 
-			// Resest properties on scroll reset
-			// } else {
-			// 	document.body.classList.remove('changebody');
-			// 	intersectionCount = 0;
+		// 		document.body.classList.add('changebody')
+		// 		// Loop <li>s, add class
+		// 		listItems.forEach(item => {
+		// 			item.classList.add('changebody')
+		// 		})
+
+		// 		// Add extra functions here if necessary
+		// 	}
+
+		// 	// Resest properties on scroll reset
+		// 	// } else {
+		// 	// 	document.body.classList.remove('changebody');
+		// 	// 	intersectionCount = 0;
+		// 		}
+		// })
+		// })
+		// liElements.forEach(li => {
+		// intersectionObserver.observe(li)
+		// })
+
+		let scrollClass = 'changebody' // Set up variables.
+		let scrollBlocks = document.querySelectorAll('li:nth-child(n+6)') // Get all of them.
+		let lastObservedBlock = null
+		
+		// Loop through the list, doing this `forEach` one.
+		scrollBlocks.forEach((block) => {
+			let sectionObserver = new IntersectionObserver((entries) => {
+				let [entry] = entries
+		
+				if (entry.isIntersecting) {
+					document.body.classList.add(scrollClass) // Add class to body
+					block.classList.add(scrollClass) // Add class to li element
+					lastObservedBlock = block // Update last observed block
+				} else if (lastObservedBlock === block) {
+					document.body.classList.remove(scrollClass) // Remove class from body
+					block.classList.remove(scrollClass) // Remove class from li element
+					lastObservedBlock = null // Reset last observed block
 				}
+			})
+		
+			sectionObserver.observe(block) // Watch each one!
 		})
-		})
-		liElements.forEach(li => {
-		intersectionObserver.observe(li)
-		})
+	
 	})
-
-// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --could make title or posts melt? blurry? or have something wither/die when out of frame, reverse the inspector so it's focusing on things that ARENT selected --ANIMTION-PLAY-STATE pause
+// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --could make title or posts melt? blurry? or have something wither/die when out of frame, reverse the inspector so it's focusing on things that ARENT selected --ANIMTION-PLAY-STATE pause /

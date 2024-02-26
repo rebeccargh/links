@@ -34,12 +34,13 @@ body {
 	transition: var(--color) 60s linear;
 }
 
-
 #title {
-	height: 100vw;
-	position: sticky;
 	top: calc(var(--gutter)/1.618);
+	position: absolute;
 	flex: 30%;
+}
+#channel-title {
+	position: sticky;
 }
 
 #allblocks {
@@ -51,20 +52,23 @@ body {
 		flex-direction: row;
 	}
 	#title {
-		position: fixed;
-	}
-	#channel-title {
+		height: 100vw;
 		position: sticky;
+		top: calc(var(--gutter)/1.618);
 	}
 }
 
 /* check media query for sticky/non-sticky behavior in mobile */
-
 h1 {
 	font-size: calc(var(--font-size)*2);
 	text-transform: uppercase;
 	padding-bottom: calc(var(--gutter)/1.618);
+}
+
+@media screen and (min-width: 600px) {
+h1 {
 	text-align: right;
+}
 }
 
 h2 {
@@ -87,7 +91,6 @@ li {
 	margin-bottom: calc(var(--gutter)*1.618);
 	opacity: 0.5;
 }
-
 
 @media screen and (min-width: 850px) {
 	.block figure {
@@ -194,7 +197,6 @@ audio::-webkit-media-controls-mute-button{
 
   /* FIX ME FOR MOBILE DESIGN */
   li:active {
-	animation-name: none;
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
@@ -202,7 +204,6 @@ audio::-webkit-media-controls-mute-button{
 
   @media screen and (min-width: 850px) {
   li:hover {
-	animation-name: none;
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
@@ -217,8 +218,29 @@ audio::-webkit-media-controls-mute-button{
 		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌈</text></svg>") 16 0,auto;
 }
 
-.changebody a {
-	color: #dd38a0;
-	transition: color 10s linear;
+.changebody img {
+	-webkit-animation: colorchange linear 10s infinite;
+	animation: colorchange linear 10s infinite;
 }
+
+.changebody a {
+	/* color: #dd38a0;
+	transition: color 10s linear; */
+	-webkit-animation: colorchange linear 10s infinite;
+	animation: colorchange linear 10s infinite;
+}
+
+@-webkit-keyframes colorchange {
+	0% {
+	  -webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
+	}
+	
+	50% {
+	  -webkit-filter: hue-rotate(360deg) saturate(8) invert(.25);
+	}
+	
+	100% {
+	  -webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
+	}
+  }
 
