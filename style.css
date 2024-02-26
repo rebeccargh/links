@@ -50,9 +50,12 @@ body {
 	body {
 		flex-direction: row;
 	}
-	/* #title {
-		position: relative;
-	} */
+	#title {
+		position: fixed;
+	}
+	#channel-title {
+		position: sticky;
+	}
 }
 
 /* check media query for sticky/non-sticky behavior in mobile */
@@ -190,12 +193,11 @@ audio::-webkit-media-controls-mute-button{
   }
 
   /* FIX ME FOR MOBILE DESIGN */
-  li.active {
+  li:active {
 	animation-name: none;
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
-	transition: 2s;
   }
 
   @media screen and (min-width: 850px) {
@@ -204,27 +206,19 @@ audio::-webkit-media-controls-mute-button{
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
-	transition: 2s;
   }
 }
 
 .changebody {
-	background-color: #DBBDF6;
-	color: #342A3C;
+	background-color: #342A3C;
+	color: #b977f2;
 	transition: background-color 10s linear, color 10s linear;
 	cursor:
 		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌈</text></svg>") 16 0,auto;
 }
 
 .changebody a {
-	color: #C11481;
+	color: #dd38a0;
 	transition: color 10s linear;
 }
-/* this does not work yet */
 
-/* footer {
-	color: var(--font-color);
-	font-size: calc(var(--font-size)/2);
-	position: static;
-	bottom: 0;
-} */

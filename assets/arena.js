@@ -253,28 +253,28 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		let intersectionObserver = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
-			intersectionCount++;
+			intersectionCount++
 			if (intersectionCount >= 5) {
-				let listItems = document.querySelectorAll('li');
+				let listItems = document.querySelectorAll('li')
 
+				document.body.classList.add('changebody')
 				// Loop <li>s, add class
 				listItems.forEach(item => {
-					item.classList.add('changebody');
-				});
-				document.body.classList.add('changebody')
+					item.classList.add('changebody')
+				})
+
 				// Add extra functions here if necessary
 			}
+
+			// Resest properties on scroll reset
 			// } else {
-			// 	// Reset <body> properties when no longer scrolled past 10 <li> elements
 			// 	document.body.classList.remove('changebody');
-			// 	intersectionCount = 0; // Reset intersection counter
+			// 	intersectionCount = 0;
 				}
 		})
 		})
-
-		// Observe each <li> element
 		liElements.forEach(li => {
-		intersectionObserver.observe(li);
+		intersectionObserver.observe(li)
 		})
 	})
 
