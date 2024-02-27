@@ -46,10 +46,11 @@ let renderBlock = (block) => {
 						<img src="${ block.image.original.url }">
 						<figcaption>
 						${ block.description_html }
+						<p><a href="${ block.source.url }" target="_blank">See the original ↗</a></p>
 						</figcaption>
 					</figure>
 				</div>
-				<p><a href="${ block.source.url }" target="_blank">See the original ↗</a></p>
+
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -246,40 +247,6 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		})
 
 
-		// OLD CODE THAT MICHAEL SAID IS COMPLICATED FOR NO REASON
-
-		// let scrollClass = 'trip1'
-		// let liElements = document.querySelectorAll('li')
-
-		// let intersectionCount = 0
-
-		// let intersectionObserver = new IntersectionObserver((entries) => {
-		// entries.forEach(entry => {
-		// 	if (entry.isIntersecting) {
-		// 	intersectionCount++
-		// 	if (intersectionCount >= 5) {
-		// 		let listItems = document.querySelectorAll('li')
-
-		// 		document.body.classList.add('changebody')
-		// 		// Loop <li>s, add class
-		// 		listItems.forEach(item => {
-		// 			item.classList.add('changebody')
-		// 		})
-
-		// 		// Add extra functions here if necessary
-		// 	}
-
-		// 	// Resest properties on scroll reset
-		// 	// } else {
-		// 	// 	document.body.classList.remove('changebody');
-		// 	// 	intersectionCount = 0;
-		// 		}
-		// })
-		// })
-		// liElements.forEach(li => {
-		// intersectionObserver.observe(li)
-		// })
-
 		let scrollClass = 'changebody' // Set up variables.
 		let scrollBlocks = document.querySelectorAll('li:nth-child(n+6)') // Get all of them.
 		let lastObservedBlock = null
@@ -304,4 +271,4 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		})
 	
 	})
-// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --could make title or posts melt? blurry? or have something wither/die when out of frame, reverse the inspector so it's focusing on things that ARENT selected --ANIMTION-PLAY-STATE pause /
+// TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --could make title or posts melt? blurry? or have something wither/die when out of frame, reverse the inspector so it's focusing on things that ARENT selected

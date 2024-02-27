@@ -15,13 +15,17 @@
 	}
 }
 
+html {
+	overflow-x: hidden;
+}
+
 body {
 	font-family: sans-serif;
 	font-size: var(--font-size);
-	padding-bottom: calc(var(--gutter)*2);
-	padding-left: var(--gutter);
-	padding-right: var(--gutter);
-	padding-top: calc(var(--gutter)*2);
+	padding-bottom: var(--gutter);
+	padding-left: calc(var(--gutter)/2);
+	padding-right: calc(var(--gutter)/2);
+	padding-top: var(--gutter);
 	background-color: var(--color);
 	color: var(--font-color);
 	font-family: var(--font);
@@ -29,30 +33,53 @@ body {
 		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍄</text></svg>") 16 0,auto; /*!emojicursor.app*/
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--gutter)*2);
+	gap: calc(var(--gutter)/2);
 	position: relative;
 	transition: var(--color) 60s linear;
 }
 
-#title {
-	top: calc(var(--gutter)/1.618);
-	position: absolute;
-	flex: 30%;
+@media screen and (min-width: 850px) {
+	body {
+		padding-bottom: calc(var(--gutter)*2);
+		padding-left: var(--gutter);
+		padding-right: var(--gutter);
+		padding-top: calc(var(--gutter)*2);
+		gap: calc(var(--gutter)*2);
+	}
 }
+
+#title {
+	top: calc(var(--gutter)/2);
+	padding-bottom: calc(var(--gutter)/4);
+	flex: 20%;
+}
+
+@media screen and (min-width: 850px) {
+	#title {
+		flex: 30%;
+	}
+}
+
 #channel-title {
 	position: sticky;
 }
 
 #allblocks {
-	flex: 70%;
+	flex: 80%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 850px) {
+	#allblocks {
+		flex: 70%;
+	}
+}
+
+@media screen and (min-width: 850px) {
 	body {
 		flex-direction: row;
 	}
 	#title {
-		height: 100vw;
+		/* height: ; */
 		position: sticky;
 		top: calc(var(--gutter)/1.618);
 	}
@@ -62,18 +89,26 @@ body {
 h1 {
 	font-size: calc(var(--font-size)*2);
 	text-transform: uppercase;
-	padding-bottom: calc(var(--gutter)/1.618);
+	padding-bottom: calc(var(--gutter)/2);
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 850px) {
 h1 {
 	text-align: right;
+	padding-bottom: calc(var(--gutter)/3);
 }
 }
 
 h2 {
 	font-size: calc(var(--font-size)*0.8);
-	padding-bottom: calc(var(--gutter)/2);
+	padding-bottom: calc(var(--gutter)/3);
+}
+
+@media screen and (min-width: 850px) {
+	h2 	{
+		font-size: calc(var(--font-size)*0.8);
+		padding-bottom: calc(var(--gutter)/2);
+	}
 }
 
 section {
@@ -98,7 +133,7 @@ li {
 		flex-direction: row;
 		align-items: center;
 		gap: calc(var(--gutter));
-		margin-left: -5vw;
+		margin-left: -3vw;
 	}
 
 	figcaption {
@@ -111,9 +146,16 @@ div {
 }
 
 p:not(#channel-users), figcaption {
+	padding-top: calc(var(--gutter)/4);
+	padding-bottom: calc(var(--gutter)/3);
+	font-size: calc(var(--font-size)*0.55);
+	}
+
+@media screen and (min-width: 850px) {
+p:not(#channel-users), figcaption {
 	padding-top: calc(var(--gutter)/3);
 	padding-bottom: calc(var(--gutter)/2);
-	font-size: calc(var(--font-size)*0.55);
+	}
 }
 
 .date-added {
@@ -134,7 +176,8 @@ a:hover {
 }
 
 img {
-	height: 50vh;
+	max-height: 50vh;
+    width: auto;
 	border-radius: 15%;
 	overflow: hidden;
 }
@@ -196,7 +239,7 @@ audio::-webkit-media-controls-mute-button{
   }
 
   /* FIX ME FOR MOBILE DESIGN */
-  li:active {
+  li:focus {
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
@@ -211,9 +254,9 @@ audio::-webkit-media-controls-mute-button{
 }
 
 .changebody {
-	background-color: #342A3C;
+	background-color: #1f1924;
 	color: #b977f2;
-	transition: background-color 10s linear, color 10s linear;
+	transition: background-color 2s linear, color 2s linear;
 	cursor:
 		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌈</text></svg>") 16 0,auto;
 }
@@ -242,5 +285,19 @@ audio::-webkit-media-controls-mute-button{
 	100% {
 	  -webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
 	}
+  }
+
+  @keyframes colorchange {
+	0% {
+		-webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
+	  }
+	  
+	  50% {
+		-webkit-filter: hue-rotate(360deg) saturate(8) invert(.25);
+	  }
+	  
+	  100% {
+		-webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
+	  }
   }
 
