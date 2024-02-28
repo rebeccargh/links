@@ -51,11 +51,14 @@ body {
 #title {
 	top: calc(var(--gutter)/2);
 	padding-bottom: calc(var(--gutter)/4);
+	position: relative;
 }
 
 @media screen and (min-width: 850px) {
 	#title {
 		flex: 30%;
+		position: relative;
+		height: 100vh;
 	}
 }
 
@@ -123,7 +126,6 @@ section {
 
 #channel-blocks {
 	color: var(--font-color);
-	background-color: var(---color);
 	margin-bottom: calc(var(--gutter));
 	max-width: 60vw;
 }
@@ -210,6 +212,12 @@ iFrame {
 	width: 560px; 
 	height: 315px;
 	z-index: 1;
+	margin-left: 15%;
+	animation: colorchange linear 10s infinite;
+}
+
+iFrame:hover {
+	animation: none;
 }
 
 audio {
