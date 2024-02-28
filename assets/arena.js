@@ -270,7 +270,7 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 			sectionObserver.observe(block) // Watch each one!
 		})
 
-		let mobileTouchClass = 'changebody' 
+		let mobileTouchClass = 'focus' 
 		let mobileTouches = document.querySelectorAll('li') 
 
 		mobileTouches.forEach(mobileTouch => {

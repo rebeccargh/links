@@ -9,7 +9,7 @@
 	--link-color: #446916;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 850px) {
 	:root {
 		--font-size: 32px;
 	}
@@ -126,11 +126,8 @@ section {
 li {
 	margin-bottom: calc(var(--gutter)*1.618);
 	padding: calc(var(--gutter)/2);
-	/* border-radius: 5%; */
-	border-width: 20px;
-	border-style: solid;
-	border-image: radial-gradient(circle, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 	opacity: 0.5;
+	transition: background-color 2s linear, color 2s linear;
 }
 
 @media screen and (min-width: 850px) {
@@ -182,10 +179,24 @@ a:hover {
 }
 
 img {
-	max-height: 50vh;
-    width: auto;
+	height: auto;
+	min-width: 150px;
 	border-radius: 15%;
 	overflow: hidden;
+}
+
+@media screen and (min-width: 850px) {
+	img {
+		min-width: 200px;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: 1150px) {
+	img {
+		min-width: 300px;
+		height: auto;
+	}
 }
 
 iFrame {
@@ -245,7 +256,7 @@ audio::-webkit-media-controls-mute-button{
   }
 
   /* FIX ME FOR MOBILE DESIGN */
-  li:focus {
+.focus {
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
@@ -267,17 +278,22 @@ audio::-webkit-media-controls-mute-button{
 		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌈</text></svg>") 16 0,auto;
 }
 
+.changebody li {
+    background-color: #1f1924;
+    color: #b977f2;
+	transition: background-color 2s linear, color 2s linear;
+}
+
 .changebody img {
 	-webkit-animation: colorchange linear 10s infinite;
 	animation: colorchange linear 10s infinite;
 }
 
 .changebody a {
-	/* color: #dd38a0;
-	transition: color 10s linear; */
 	-webkit-animation: colorchange linear 10s infinite;
 	animation: colorchange linear 10s infinite;
 }
+
 
 @-webkit-keyframes colorchange {
 	0% {
@@ -306,4 +322,16 @@ audio::-webkit-media-controls-mute-button{
 		-webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
 	  }
   }
+
+  /* @media (prefers-reduced-motion: reduce) {
+	li { animation: none; }
+	img { 
+		max-height: 70vh;
+		width: auto;
+		scale: 1;
+	}
+	.breath1 {
+		display: none;
+	}
+  } */
 
