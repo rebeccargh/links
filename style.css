@@ -256,10 +256,11 @@ audio::-webkit-media-controls-mute-button{
   }
 
   /* FIX ME FOR MOBILE DESIGN */
-.focus {
+li.focus {
 	opacity: 1;
 	transition: opacity 2s;
 	transform: scale(1);
+	animation: none;
   }
 
   @media screen and (min-width: 850px) {
