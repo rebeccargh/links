@@ -125,6 +125,11 @@ section {
 
 li {
 	margin-bottom: calc(var(--gutter)*1.618);
+	padding: calc(var(--gutter)/2);
+	/* border-radius: 5%; */
+	border-width: 20px;
+	border-style: solid;
+	border-image: radial-gradient(circle, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 	opacity: 0.5;
 }
 

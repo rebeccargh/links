@@ -269,6 +269,15 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		
 			sectionObserver.observe(block) // Watch each one!
 		})
+
+		let mobileTouchClass = 'changebody' 
+		let mobileTouches = document.querySelectorAll('li') 
+
+		mobileTouches.forEach(mobileTouch => {
+		mobileTouch.onclick = function() { 
+			this.classList.toggle(mobileTouchClass)
+		}
+		})
 	
 	})
 // TO DO: --add active state toggle for mobile screens, --reduce motion for breathing, --could make title or posts melt? blurry? or have something wither/die when out of frame, reverse the inspector so it's focusing on things that ARENT selected
